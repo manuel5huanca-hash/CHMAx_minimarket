@@ -8,3 +8,4 @@ Flask-Login==0.6.3
 Flask-WTF==1.2.1
 Flask-SQLAlchemy==3.1.1
 Flask-Uploads==0.2.1
+gunicorn
