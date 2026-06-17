@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Iniciar sesión</h3>
+    <form method="POST">
+        <input type="text" name="correo" placeholder="Correo o usuario" class="form-control mb-3" required>
+        <input type="password" name="contraseña" placeholder="Contraseña" class="form-control mb-3" required>
+        <button type="submit" class="btn btn-danger w-100">Ingresar</button>
+    </form>
+    {% if error %}
+    <p class="text-danger text-center mt-3">{{ error }}</p>
+    {% endif %}
+</div>
+{% endblock %}

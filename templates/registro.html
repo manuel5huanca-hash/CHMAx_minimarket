@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Registro de usuario</h3>
+    <form method="POST">
+        <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre completo" required>
+        <input type="email" name="correo" class="form-control mb-3" placeholder="Correo electrónico" required>
+        <input type="password" name="contraseña" class="form-control mb-3" placeholder="Contraseña" required>
+        <button type="submit" class="btn btn-danger w-100">Registrarse</button>
+    </form>
+</div>
+{% endblock %}

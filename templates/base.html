@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimarket Cómputo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="topbar text-center py-1 bg-dark text-white">
+        <small>Lunes a Sábado 9am a 6pm | Domingo 10am a 4pm | Métodos de pago disponibles</small>
+    </div>
+
+    <!-- Navbar principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e83131;">  
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ url_for('static', filename='img/logo_empresa1.png') }}" alt="Logo" height="80" class="me-2">
+                <span class="fw-bold">Conectamos Mentes, Hacemos Ayuda xperta</span>
+            </a>
+
+            <form class="d-flex ms-auto me-3" action="{{ url_for('buscar') }}" method="get">
+                <input class="form-control" type="search" name="q" placeholder="Busca en nuestro catálogo">
+                <button class="btn btn-dark ms-2" type="submit">Buscar</button>
+            </form>
+
+            <ul class="navbar-nav">
+                {% if session.get('usuario') %}
+                <li class="nav-item"><a class="nav-link" href="#">{{ session['usuario'] }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Mi cuenta</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('registro') }}">Registrarse</a></li>
+                {% endif %}     
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('carrito') }}">🛒 Carrito</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Menú de categorías -->
+<div class="bg-dark text-white text-center py-2">
+    <a href="{{ url_for('index') }}" class="mx-2 text-white text-decoration-none">Inicio</a>
+    <a href="{{ url_for('catalogo', categoria='gamer') }}" class="mx-2 text-white text-decoration-none">PC Gamer</a>
+    <a href="{{ url_for('catalogo', categoria='laptops') }}" class="mx-2 text-white text-decoration-none">Laptops</a>
+    <a href="{{ url_for('catalogo', categoria='monitores') }}" class="mx-2 text-white text-decoration-none">Monitores</a>
+    <a href="{{ url_for('catalogo', categoria='accesorios') }}" class="mx-2 text-white text-decoration-none">Accesorios</a>
+    <a href="{{ url_for('contactenos') }}" class="mx-2 text-white text-decoration-none">Contáctenos</a>
+</div>
+
+
+
+    <!-- Contenido dinámico -->
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!-- Footer -->
+<footer class="footer bg-dark text-white mt-5">
+  <div class="container py-4">
+    <div class="row">
+      <!-- Información de contacto -->
+      <div class="col-md-3">
+        <h5>Información instantánea</h5>
+        <p>📞 <a href="tel:921605668" class="text-white text-decoration-none">921 605 668</a></p>
+        <p>📞 <a href="tel:917722422" class="text-white text-decoration-none">917 722 422</a></p>
+        <p>✉️ Huanca_07ces@outlook.com</p>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="col-md-3">    
+        <h5>Enlaces rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ url_for('index') }}" class="text-white text-decoration-none">Inicio</a></li>
+          <li><a href="{{ url_for('catalogo', categoria='gamer') }}" class="text-white text-decoration-none">PC Gamer</a></li>
+          <li><a href="{{ url_for('catalogo', categoria='laptops') }}" class="text-white text-decoration-none">Laptops</a></li>
+          <li><a href="{{ url_for('catalogo', categoria='monitores') }}" class="text-white text-decoration-none">Monitores</a></li>
+          <li><a href="{{ url_for('catalogo', categoria='accesorios') }}" class="text-white text-decoration-none">Accesorios</a></li>
+        </ul>
+      </div>
+
+      <!-- Métodos de pago -->
+      <div class="col-md-3">
+        <h5>Métodos de pago</h5>
+        <img src="{{ url_for('static', filename='img/visa.png') }}" alt="Visa" width="50">
+        <img src="{{ url_for('static', filename='img/matercard.png') }}" alt="Mastercard" width="50">
+        <img src="{{ url_for('static', filename='img/yape.png') }}" alt="Yape" width="50">
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="col-md-3">
+        <h5>Síguenos</h5>
+        <a href="#" class="text-white me-2">Facebook</a>
+        <a href="#" class="text-white me-2">Instagram</a>
+        <a href="https://wa.me/51921605668" target="_blank" class="text-white">WhatsApp</a>
+      </div>
+    </div>
+    <hr class="border-light">
+    <p class="text-center mb-0">&copy; 2026 Minimarket Cómputo - Todos los derechos reservados</p>
+  </div>
+</footer>
+

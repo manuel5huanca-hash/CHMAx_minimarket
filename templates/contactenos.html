@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Contáctenos</h2>
+    <p class="text-center">Cuéntenos el problema de su equipo y nuestro soporte técnico se comunicará con usted.</p>
+
+    {% if enviado %}
+        <div class="alert alert-success text-center">✅ Su mensaje fue enviado correctamente. Nos comunicaremos pronto.</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Nombre completo *</label>
+                <input type="text" name="nombre" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Lugar *</label>
+                <input type="text" name="lugar" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Equipo *</label>
+            <select name="equipo" class="form-select" onchange="mostrarOtro(this)">
+                <option value="Laptop">Laptop</option>
+                <option value="Impresora">Impresora</option>
+                <option value="PC">PC</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <input type="text" name="otro_equipo" id="otro_equipo" class="form-control mt-2" placeholder="Especifique otro equipo" style="display:none;">
+        </div>
+
+        <div class="mb-3">
+            <label>Mensaje *</label>
+            <textarea name="mensaje" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Número *</label>
+                <input type="text" name="numero" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Correo *</label>
+                <input type="email" name="correo" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+function mostrarOtro(select) {
+    const campo = document.getElementById('otro_equipo');
+    campo.style.display = select.value === 'Otro' ? 'block' : 'none';
+}
+</script>
+{% endblock %}

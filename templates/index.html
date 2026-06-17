@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Banner principal -->
+<div class="banner text-white text-center mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <img src="{{ url_for('static', filename='img/banner_principal.png') }}" 
+                 class="img-fluid rounded banner-grande" 
+                 alt="PC Gamer">
+        </div>
+    </div>
+</div>
+
+<!-- Texto "Catálogo" centrado -->
+<div class="text-center mb-2">
+    <h5 class="text-muted">Catálogo</h5>
+</div>
+
+<!-- Categorías -->
+<h3 class="text-center mb-4">Explora nuestra gama de productos</h3>
+<div class="row text-center">
+    <div class="col-md-3">
+        <a href="{{ url_for('catalogo', categoria='laptops') }}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/productos/laptop.png') }}" class="card-img-top" alt="Laptop">
+                <div class="card-body"><h5>Laptops</h5></div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="{{ url_for('catalogo', categoria='gamer') }}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/productos/pc_gamer.png') }}" class="card-img-top" alt="Gamer">
+                <div class="card-body"><h5>PC Gamer</h5></div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="{{ url_for('catalogo', categoria='oficina') }}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/productos/pc_oficina.png') }}" class="card-img-top" alt="Oficina">
+                <div class="card-body"><h5>Oficina</h5></div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="{{ url_for('catalogo', categoria='ingenieria') }}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/productos/pc_ingenieria.png') }}" class="card-img-top" alt="Ingeniería">
+                <div class="card-body"><h5>Ingeniería & Diseño</h5></div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

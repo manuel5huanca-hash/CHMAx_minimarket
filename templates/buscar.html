@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Resultados de búsqueda para "{{ termino }}"</h3>
+
+    {% if resultados %}
+    <div class="row">
+        {% for producto in resultados %}
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/productos/' + producto.imagen) }}" class="card-img-top" alt="{{ producto.nombre }}">
+                <div class="card-body text-center">
+                    <h5>{{ producto.nombre }}</h5>
+                    <p class="text-muted">S/{{ producto.precio }}</p>
+                    <p>Stock: {{ producto.stock }}</p>
+                    <button class="btn btn-danger">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center text-muted">{{ mensaje }}</p>
+    {% endif %}
+</div>
+{% endblock %}

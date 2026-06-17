@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Tu carrito</h3>
+    {% if carrito %}
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrito %}
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>S/{{ item.precio }}</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <form action="{{ url_for('agregar_carrito', id=item.id) }}" method="get" class="d-inline">
+                            <input type="hidden" name="cantidad" value="-1">
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">−</button>
+                        </form>
+                        <span class="mx-2">{{ item.cantidad }}</span>
+                        <form action="{{ url_for('agregar_carrito', id=item.id) }}" method="get" class="d-inline">
+                            <input type="hidden" name="cantidad" value="1">
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">+</button>
+                        </form>
+                    </div>
+                </td>
+                <td>S/{{ item.precio * item.cantidad }}</td>
+                <td>
+                    <a href="{{ url_for('eliminar_carrito', id=item.id) }}" 
+                       class="btn btn-outline-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="text-end">Total: S/{{ total }}</h5>
+    <div class="text-center mt-3">
+        <button class="btn btn-success w-50 mb-2">Proceder al pago</button>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary w-50">Seguir agregando productos</a>
+    </div>
+    {% else %}
+    <p class="text-center text-muted">Tu carrito está vacío.</p>
+    {% endif %}
+</div>
+{% endblock %}
