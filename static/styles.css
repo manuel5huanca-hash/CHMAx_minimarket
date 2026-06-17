@@ -1,0 +1,62 @@
+
+/*catalogo*/
+.text-muted {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #444 !important;
+}
+
+/*panel color rojo , letra */
+.titulo-especial {
+    font-family: 'Luckiest Guy', cursive; /* fuente llamativa */
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000; /* efecto relieve */
+    letter-spacing: 1px;
+}
+
+
+
+/*footer*/
+.footer h5 {
+  border-bottom: 2px solid #c62828;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.footer a:hover {
+  color: #ff9800;
+}
+
+/*stilo de dashboard*/
+html, body {
+    height: 100%;
+    margin: 0;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+.table-responsive {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.table {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+/* barra de busqueda*/
+.navbar .form-control {
+    width: 500px; /* ajusta el ancho del cuadro de búsqueda */
+    transition: width 0.3s ease; /* efecto suave al cambiar tamaño */
+}
+
+.navbar .form-control:focus {
+    width: 400px; /* se expande un poco al hacer clic */
+}
+/*estilo de inicio de sesion*/
+
